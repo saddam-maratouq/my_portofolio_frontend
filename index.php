@@ -312,84 +312,31 @@ $webSiteData = getSingleQueryData('website_settings') ;
 			</div>
 			<div class="row">
 				<div class="testi_slider owl-carousel">
+
+				<?php      $feedBacksData = getQueryData('feedback')  ;
+				
+						foreach ($feedBacksData as $feedBack ) :
+						
+				?> 
+
         			<div class="testi_item">
         				<div class="row">
         					<div class="col-lg-4">
-        						<img src="img/testimonials/t1.jpg" alt="">
+        						<img class="feedback_img"  src="<?= $uploadImgPath ?>/feedback/<?= htmlspecialchars($feedBack['image_name'] ?? 'default-user.jpg') ?>"
+								 alt="<?= htmlspecialchars($feedBack['client_name'] ?? 'client') ?>"
+								 >
         					</div>
         					<div class="col-lg-8">
         						<div class="testi_text">
-        							<h4>Elite Martin</h4>
-									<p>Him, made can't called over won't there on divide there male fish beast own his day third seed sixth seas unto. Saw from </p>
+        							<h4><?= htmlspecialchars($feedBack['client_name'] ?? 'Client Name') ?></h4>
+									<p><?= htmlspecialchars($feedBack['feedback'] ?? 'No feedback provided.') ?></p>
         						</div>
         					</div>
         				</div>
-        			</div>
-        			<div class="testi_item">
-        				<div class="row">
-        					<div class="col-lg-4">
-        						<img src="img/testimonials/t2.jpg" alt="">
-        					</div>
-        					<div class="col-lg-8">
-        						<div class="testi_text">
-        							<h4>Davil Saden</h4>
-									<p>Him, made can't called over won't there on divide there male fish beast own his day third seed sixth seas unto. Saw from </p>
-        						</div>
-        					</div>
-        				</div>
-        			</div>
-        			<div class="testi_item">
-        				<div class="row">
-        					<div class="col-lg-4">
-        						<img src="img/testimonials/t1.jpg" alt="">
-        					</div>
-        					<div class="col-lg-8">
-        						<div class="testi_text">
-        							<h4>Elite Martin</h4>
-									<p>Him, made can't called over won't there on divide there male fish beast own his day third seed sixth seas unto. Saw from </p>
-        						</div>
-        					</div>
-        				</div>
-        			</div>
-        			<div class="testi_item">
-        				<div class="row">
-        					<div class="col-lg-4">
-        						<img src="img/testimonials/t2.jpg" alt="">
-        					</div>
-        					<div class="col-lg-8">
-        						<div class="testi_text">
-        							<h4>Davil Saden</h4>
-									<p>Him, made can't called over won't there on divide there male fish beast own his day third seed sixth seas unto. Saw from </p>
-        						</div>
-        					</div>
-        				</div>
-        			</div>
-        			<div class="testi_item">
-        				<div class="row">
-        					<div class="col-lg-4">
-        						<img src="img/testimonials/t1.jpg" alt="">
-        					</div>
-        					<div class="col-lg-8">
-        						<div class="testi_text">
-        							<h4>Elite Martin</h4>
-									<p>Him, made can't called over won't there on divide there male fish beast own his day third seed sixth seas unto. Saw from </p>
-        						</div>
-        					</div>
-        				</div>
-        			</div>
-        			<div class="testi_item">
-        				<div class="row">
-        					<div class="col-lg-4">
-        						<img src="img/testimonials/t2.jpg" alt="">
-        					</div>
-        					<div class="col-lg-8">
-        						<div class="testi_text">
-        							<h4>Davil Saden</h4>
-									<p>Him, made can't called over won't there on divide there male fish beast own his day third seed sixth seas unto. Saw from </p>
-        						</div>
-        					</div>
-        				</div>
-        			</div>
+        			</div> 
+
+					<?php   endforeach ?> 
+
         		</div>
 			</div>
 		</div>
