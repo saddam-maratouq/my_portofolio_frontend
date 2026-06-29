@@ -216,35 +216,23 @@ $webSiteData = getSingleQueryData('website_settings') ;
 					</div>
 				</div>
 			</div>
-			<div class="row feature_inner">
-				<div class="col-lg-3 col-md-6">
+			<div class="row feature_inner"> 
+				<?php     
+				
+						$servicesData = getQueryData('services') ; 
+
+						foreach ( $servicesData as  $service ) : 
+				?>
+				<div class="col-lg-3 col-md-6"> 
 					<div class="feature_item">
-						<img src="img/services/s1.png" alt="">
-						<h4>Wp developing</h4>
-						<p>Creeping for female light years that lesser can't evening heaven isn't bearing tree</p>
+						<img src="<?= $uploadImgPath ?>/services/<?= escapeHtml($service['image_name'] ?? 'default.jpg') ?>" alt="service img">
+
+						<h4> <?=escapeHtml($service['title']) ?>  </h4>
+						<p><?=escapeHtml($service['description']) ?> </p>
 					</div>
 				</div>
-				<div class="col-lg-3 col-md-6">
-					<div class="feature_item">
-						<img src="img/services/s2.png" alt="">
-						<h4>UI/ux design</h4>
-						<p>Creeping for female light years that lesser can't evening heaven isn't bearing tree</p>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6">
-					<div class="feature_item">
-						<img src="img/services/s3.png" alt="">
-						<h4>Web design</h4>
-						<p>Creeping for female light years that lesser can't evening heaven isn't bearing tree</p>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6">
-					<div class="feature_item">
-						<img src="img/services/s4.png" alt="">
-						<h4>seo optimize</h4>
-						<p>Creeping for female light years that lesser can't evening heaven isn't bearing tree</p>
-					</div>
-				</div>
+				<?php    endforeach  ?>
+
 			</div>
 		</div>
 	</section>
