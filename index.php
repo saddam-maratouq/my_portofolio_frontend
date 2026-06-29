@@ -162,76 +162,28 @@ $webSiteData = getSingleQueryData('website_settings') ;
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-lg-6">
-					<div class="row">
+					<div class="row"> 
+						<?php   $tecData = getQueryData('experience_gallery')   ;
+						foreach ($tecData as $tec) :
+						?>
+
 						<div class="col-lg-4 col-md-4 col-sm-6">
 							<div class="single-brand-item d-table">
 								<div class="d-table-cell text-center">
-									<img src="img/brands/logo1.png" alt="">
+									<img src=" <?=$uploadImgPath?>/experince-technology/<?= escapeHtml( $tec['image_name'])?>   "  alt="">
 								</div>
 							</div>
 						</div>
-						<div class="col-lg-4 col-md-4 col-sm-6">
-							<div class="single-brand-item d-table">
-								<div class="d-table-cell text-center">
-									<img src="img/brands/logo2.png" alt="">
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-4 col-sm-6">
-							<div class="single-brand-item d-table">
-								<div class="d-table-cell text-center">
-									<img src="img/brands/logo3.png" alt="">
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-4 col-sm-6">
-							<div class="single-brand-item d-table">
-								<div class="d-table-cell text-center">
-									<img src="img/brands/logo4.png" alt="">
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-4 col-sm-6">
-							<div class="single-brand-item d-table">
-								<div class="d-table-cell text-center">
-									<img src="img/brands/logo5.png" alt="">
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-4 col-sm-6">
-							<div class="single-brand-item d-table">
-								<div class="d-table-cell text-center">
-									<img src="img/brands/logo6.png" alt="">
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-4 col-sm-6">
-							<div class="single-brand-item d-table">
-								<div class="d-table-cell text-center">
-									<img src="img/brands/logo7.png" alt="">
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-4 col-sm-6">
-							<div class="single-brand-item d-table">
-								<div class="d-table-cell text-center">
-									<img src="img/brands/logo8.png" alt="">
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-4 col-sm-6">
-							<div class="single-brand-item d-table">
-								<div class="d-table-cell text-center">
-									<img src="img/brands/logo9.png" alt="">
-								</div>
-							</div>
-						</div>
+						<?php  endforeach ?>
 					</div>
 				</div>
+
 				<div class="offset-lg-2 col-lg-4 col-md-6">
 					<div class="client-info">
 						<div class="d-flex mb-50">
-							<span class="lage">10</span>
+							<?php  $experienceInfo = getSingleQueryData('experience_info')   ?>
+
+							<span class="lage"> <?= escapeHtml($experienceInfo['years_of_experience']) ?> </span>
 							<span class="smll">Years Experience Working</span>
 						</div>
 						<div class="call-now d-flex">
@@ -240,7 +192,7 @@ $webSiteData = getSingleQueryData('website_settings') ;
 							</div>
 							<div class="ml-15">
 								<p>call us now</p>
-								<h3>(+1)-800-555-6789</h3>
+								<h3 class="my-number" ><?= escapeHtml($experienceInfo['phone_number']) ?></h3>
 							</div>
 						</div>
 					</div>

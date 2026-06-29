@@ -30,10 +30,23 @@ html {
   scroll-behavior: smooth; 
 }
 
+/* general class  */
 .web_logo {
   width: 70px;
   height: 70px;
 }
+
+
+
+.my-number {
+  letter-spacing: 2px;
+}
+
+
+
+/* end general class */
+
+
 
 body {
   line-height: 26px;
