@@ -1,0 +1,3 @@
+# Ignore specific file
+config_sql/connect_db.php
+
