@@ -25,6 +25,7 @@ $webSiteData = getSingleQueryData('website_settings') ;
 
 
 
+
 ?> 
 
 
@@ -132,8 +133,11 @@ $webSiteData = getSingleQueryData('website_settings') ;
 		<div class="container">
 			<div class="row justify-content-start align-items-center">
 				<div class="col-lg-5">
+
+					<?php   $aboutMe = getSingleQueryData('about')       ?>
+
 					<div class="about_img">
-						<img class="" src="img/about-us.png" alt="">
+						<img class="" src=" <?=$uploadImgPath?>/about/<?= escapeHtml($aboutMe['image_name']) ?>  " alt="">
 					</div>
 				</div>
 
@@ -143,13 +147,7 @@ $webSiteData = getSingleQueryData('website_settings') ;
 							Introduce about <br>
 							myself</h2>
 						<p>
-							Whose given. Were gathered. There first subdue greater. Bearing you Whales heaven 
-							midst their. Beast creepeth. Fish days.
-						</p>
-						<p>
-							Is give may shall likeness made yielding spirit a itself together created after sea 
-							is in beast beginning signs open god you're gathering whose gathered cattle let. 
-							Creature whales fruit unto meat the life beginning all in under give two.
+							<?= escapeHtml($aboutMe['description']) ?>
 						</p>
 						<a class="primary_btn" href="#"><span>Download CV</span></a>
 					</div>
