@@ -9,27 +9,27 @@ function  getQueryData ( string $tableName  , $where = '' )  : array {
     global  $connect ;
 
       // Whitelist allowed =>  tables can pass 
-    $allowedTables = [ 
-      'website_settings', 'main_slider', 'offer_meal' ,  
-       'menu_pizza' , 
-       'menu_burger' ,
-       'menu_pasta' ,
-       'menu_fries' ,
-       'about',
-       'feed_back' ,
-       'contact_us',
-       'cart_item',
-       'restaurant_tables' , 
-       'bookings'
-    ]; // add new table name here  
-    
+   $allowedTables = [ 
+    'website_settings',   // Website settings
+    'about',              // About page
+    'hero',               // Hero slider
+    'services',           // Services
+    'experience_gallery', // Experience gallery
+    'experience_info',    // Experience info
+    'my_projects',        // Projects
+    'feedback',           // Feedback
+    'contact_info',       // Contact info       
+];
+
+
+
     if (! in_array($tableName, $allowedTables)) {
        error_log("Invalid table: $tableName");
         // die("invalid  table");
         return ['error' => 'Invalid table'];
     } 
 
-    // fix later for injiction sql need refactor code ... 
+    // fix later for specific column 
     
     $stmt = $connect->prepare("SELECT  *  FROM   $tableName  $where ");
    
@@ -42,6 +42,37 @@ function  getQueryData ( string $tableName  , $where = '' )  : array {
 
     return $queryData  ?: ['empty'=>'array is empty']  ; 
 
+}
+
+
+function getSingleQueryData(string $tableName, $where = '') : array {
+    global $connect;
+
+    // Whitelist allowed tables
+    $allowedTables = [ 
+        'website_settings',   // Website settings
+        'about',              // About page
+        'hero',               // Hero slider
+        'services',           // Services
+        'experience_gallery', // Experience gallery
+        'experience_info',    // Experience info
+        'my_projects',        // Projects
+        'feedback',           // Feedback
+        'contact_info',       // Contact info       
+    ];
+
+    if (!in_array($tableName, $allowedTables)) {
+        error_log("Invalid table: $tableName");
+        return ['error' => 'Invalid table'];
+    }
+
+    $stmt = $connect->prepare("SELECT * FROM $tableName $where");
+    $stmt->execute();
+
+    // Fetch single record (assoc)
+    $queryData = $stmt->get_result()->fetch_assoc();
+
+    return $queryData ?: ['empty' => 'No record found'];
 }
 
 

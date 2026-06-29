@@ -1,3 +1,36 @@
+
+<?php
+
+$uploadImgPath  = '../../Task28-backend/upload-img/' ; 
+
+// '../../Task28-backend/upload-img/web_logo/' ;
+// show err 
+require './err_config/err_config.php';
+
+// get sql connection 
+require_once './config_sql/connect_db.php';
+
+// fn get many data depend on table you want ....
+require_once './config_sql/get_data.php' ; 
+
+
+
+function escapeHtml($str) {
+    return htmlspecialchars($str ?? 'Default name', ENT_QUOTES, 'UTF-8');
+}; 
+
+
+$webSiteData = getSingleQueryData('website_settings') ; 
+
+
+
+
+?> 
+
+
+
+
+
 <!doctype html>
 <html lang="en">
 
@@ -6,7 +39,10 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="icon" href="img/favicon.png" type="image/png">
-	<title>Satner Portfolio</title>
+
+	
+	<title> <?= $webSiteData['web_title'] ?>  Portfolio</title>
+
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="vendors/linericon/style.css">
@@ -26,7 +62,13 @@
 			<nav class="navbar navbar-expand-lg navbar-light">
 				<div class="container">
 					<!-- Brand and toggle get grouped for better mobile display -->
-					<a class="navbar-brand logo_h" href="index.html"><img src="img/logo.png" alt=""></a>
+
+				
+					<a class="navbar-brand logo_h" href="index.php">
+						<img class="web_logo" src="<?=$uploadImgPath?>/web_logo/<?= escapeHtml($webSiteData['image_name']) ?>  "  alt="">
+					</a>
+					
+
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
 					 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="icon-bar"></span>
@@ -36,7 +78,7 @@
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 						<ul class="nav navbar-nav menu_nav justify-content-end">
-							<li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
+							<li class="nav-item active"><a class="nav-link" href="index.php">Home</a></li>
 							<li class="nav-item"><a class="nav-link" href="#aboutSec">About</a></li>
 							<li class="nav-item"><a class="nav-link" href="#servicesSec">Services</a></li>
 							<li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
@@ -54,12 +96,19 @@
 	<section class="home_banner_area">
 		<div class="banner_inner">
 			<div class="container">
-				<div class="row">
+				<div class="row"> 
+					<?php         
+					
+						$heroData = getQueryData('hero')  ; 
+
+						foreach ($heroData as $hero )  : 
+						
+					?>
 					<div class="col-lg-7">
 						<div class="banner_content">
 							<h3 class="text-uppercase">Hell0</h3>
-							<h1 class="text-uppercase">I am rahi satner</h1>
-							<h5 class="text-uppercase">senior wordpress developer</h5>
+							<h1 class="text-uppercase">I am <?=escapeHtml($hero['name'])?> </h1>
+							<h5 class="text-uppercase"><?=escapeHtml($hero['title'])?>  </h5>
 							<div class="d-flex align-items-center">
 								<a class="primary_btn" href="#"><span>Hire Me</span></a>
 								<a class="primary_btn tr-bg" href="#"><span>Get CV</span></a>
@@ -68,9 +117,10 @@
 					</div>
 					<div class="col-lg-5">
 						<div class="home_right_img">
-							<img class="" src="img/banner/home-right.png" alt="">
+							<img class=""   src="<?=$uploadImgPath?>/hero/<?= escapeHtml($hero['image_name']) ?>"  alt="hero_img">
 						</div>
 					</div>
+					<?php  endforeach ?>
 				</div>
 			</div>
 		</div>

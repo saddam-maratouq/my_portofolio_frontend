@@ -30,6 +30,11 @@ html {
   scroll-behavior: smooth; 
 }
 
+.web_logo {
+  width: 70px;
+  height: 70px;
+}
+
 body {
   line-height: 26px;
   font-size: 15px;
