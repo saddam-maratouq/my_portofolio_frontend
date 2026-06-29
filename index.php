@@ -354,15 +354,19 @@ $webSiteData = getSingleQueryData('website_settings') ;
 					<div class="footer_top flex-column">
 						<div class="footer_logo">
 							<a href="#">
-								<img src="img/logo.png" alt="">
+		   <img class="web_logo" src="<?=$uploadImgPath?>/web_logo/<?= escapeHtml($webSiteData['image_name']) ?>  " alt="logo for website">
+
 							</a>
 							<h4>Follow Me</h4>
-						</div>
+						</div> 
+						<?php    $contactData  = getSingleQueryData('contact_info')   ?>
 						<div class="footer_social">
-							<a href="#"><i class="fa fa-facebook"></i></a>
-							<a href="#"><i class="fa fa-twitter"></i></a>
-							<a href="#"><i class="fa fa-dribbble"></i></a>
-							<a href="#"><i class="fa fa-behance"></i></a>
+							<a href="<?= htmlspecialchars($contactData ['linkedin'] ?? '#') ?>" rel="noopener noreferrer"  target="_blank" > 
+								<i class="fa fa-linkedin"></i>
+							</a>
+                            <a href="<?= htmlspecialchars($contactData ['github'] ?? '#') ?>"  target="_blank" rel="noopener noreferrer" > 
+								 <i class="fa fa-github"></i>
+							</a>
 						</div>
 					</div>
 				</div>
