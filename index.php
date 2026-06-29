@@ -99,7 +99,9 @@ $webSiteData = getSingleQueryData('website_settings') ;
 			<div class="container">
 				<div class="row"> 
 					<?php         
-					
+
+						$cv = 'cv/Saddam_FullStack.pdf';
+
 						$heroData = getQueryData('hero')  ; 
 
 						foreach ($heroData as $hero )  : 
@@ -112,7 +114,12 @@ $webSiteData = getSingleQueryData('website_settings') ;
 							<h5 class="text-uppercase"><?=escapeHtml($hero['title'])?>  </h5>
 							<div class="d-flex align-items-center">
 								<a class="primary_btn" href="#"><span>Hire Me</span></a>
-								<a class="primary_btn tr-bg" href="#"><span>Get CV</span></a>
+								<a class="primary_btn tr-bg" href= "<?= $cv ?>"  >
+									<span> 
+									 <i class="fa fa-download"></i> Get CV
+									</span>
+							   </a>
+								
 							</div>
 						</div>
 					</div>
