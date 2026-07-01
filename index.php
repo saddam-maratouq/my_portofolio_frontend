@@ -3,6 +3,7 @@
 
 $uploadImgPath  = '../../Task28-backend/upload-img/' ; 
 
+$hireEmail = 'mailto:saddam.maratouq@gmail.com' ; 
 // '../../Task28-backend/upload-img/web_logo/' ;
 // show err 
 require './err_config/err_config.php';
@@ -113,7 +114,12 @@ $webSiteData = getSingleQueryData('website_settings') ;
 							<h1 class="text-uppercase">I am <?=escapeHtml($hero['name'])?> </h1>
 							<h5 class="text-uppercase"><?=escapeHtml($hero['title'])?>  </h5>
 							<div class="d-flex align-items-center">
-								<a class="primary_btn" href="#"><span>Hire Me</span></a>
+								<a class="primary_btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=<?=$hireEmail?>&su=Hire%20Me"
+								target="_blank"> 
+								
+									<span>Hire Me</span>
+								</a>
+								
 								<a class="primary_btn tr-bg" href= "<?= $cv ?>"  >
 									<span> 
 									 <i class="fa fa-download"></i> Get CV
